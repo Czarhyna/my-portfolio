@@ -10,27 +10,45 @@
         <header>
             <!-- Navigation Bar -->
             <nav>
-                <div class="nav-container">
-                    <a href="index.html">Portfolio</a>
-                    <div class="nav-actions">
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#works">Works</a></li>
-                            <li><a href="#pricing">Pricing</a></li>
-                            <li><a href="contact.html">Contact Me</a></li>
-                        </ul>
+                <!-- nav container -->
+                <div class="flex justify-between items-center">
+                    <div>
+                        <a href="index.html">Portfolio</a>
+                    </div>
+                    <div class="nav-actions flex gap-4">
+                        <a href="#about">About</a>
+                            <a href="#works">Works</a>
+                            <a href="#pricing">Pricing</a>
+                            <a href="contact.html">Contact Me</a>
                     </div>
                 </div>
             </nav>
         </header>
         <main>
             <section id="about">
-                <h2>Hello World</h2>
-                <!-- Put info here -->
-                <div>
-                    <a href="">Facebook</a>
-                    <a href="">Instagram</a>
-                    <a href="contact.html">Email</a>
+                <!-- container for the columns -->
+                <div class="flex gap-8">
+                    <!-- picture column -->
+                    <div>
+                        <img src="" alt="Portfolio Owner Pic">
+                    </div>
+                    <!-- container for other components -->
+                    <div class="flex flex-col gap-4">
+                        <div>
+                            <h2>Your tagline here</h2>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="">
+                                    <img src="" alt="">Facebook
+                            </a>
+                            <a href="">
+                                    <img src="" alt="">Instagram
+                            </a>
+                            <a href="contact.html">
+                                    <img src="" alt="">Email
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section id="works">
