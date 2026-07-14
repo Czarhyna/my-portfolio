@@ -3,30 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Works</title>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
     <header>
         <!-- Navigation Bar -->
         <nav>
-            <div class="nav-container">
-                <a href="index.html">Portfolio</a>
-                <div class="nav-actions">
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#works">Works</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="contact.html">Contact Me</a></li>
-                    </ul>
+            <div class="container layout-row p-4 mx-auto">
+                <div>
+                    <a href="index.html">Portfolio</a>
+                </div>
+                <div class="layout-cluster">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#works">Works</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="mailto:jane@example.com">Email</a>
                 </div>
             </div>
         </nav>
     </header>
+
     <main>
-        <!-- work information goes here -->
+        <section id="logo-showcase">
+            <div class="container section-container layout-stack">
+                <h1>Logo Showcase</h1>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="" alt="Logo variation 1">
+                    </div>
+                    <div>
+                        <img src="" alt="Logo variation 2">
+                    </div>
+                    <div>
+                        <img src="" alt="Logo variation 3">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business-description">
+            <div class="container section-container layout-stack">
+                <h2>Business Description</h2>
+                <p>Placeholder description of the client's business goes here.</p>
+            </div>
+        </section>
+
+        <section id="business-assets">
+            <div class="container section-container layout-stack">
+                <h2>Business Assets</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <img src="" alt="Business asset 1">
+                    </div>
+                    <div>
+                        <img src="" alt="Business asset 2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="design-decisions">
+            <div class="container section-container layout-stack">
+                <h2>Design Decisions</h2>
+                <p>Placeholder explanation of design choices — color, typography, layout rationale.</p>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <!-- footer same as index.html -->
+        <div class="container section-container layout-row">
+            <div class="layout-cluster">
+                <a href="">Terms of Service</a>
+                <a href="">Privacy Policy</a>
+            </div>
+            <div class="layout-cluster">
+                <a href="">
+                    <img src="" alt="">LinkedIn
+                </a>
+                <a href="">
+                    <img src="" alt="">Facebook
+                </a>
+                <a href="">
+                    <img src="" alt="">Instagram
+                </a>
+                <a href="mailto:jane@example.com">
+                    <img src="" alt="">Email
+                </a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
