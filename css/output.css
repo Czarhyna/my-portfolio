@@ -160,14 +160,16 @@
   }
 }
 @layer utilities {
-  .col-auto {
-    grid-column: auto;
-  }
-  .row-auto {
-    grid-row: auto;
-  }
-  .row-end-2 {
-    grid-row-end: 2;
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
   }
   .container {
     width: 100%;
@@ -187,8 +189,11 @@
       max-width: 96rem;
     }
   }
-  .flex {
-    display: flex;
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .grid {
+    display: grid;
   }
   .table {
     display: table;
@@ -199,36 +204,24 @@
   .resize {
     resize: both;
   }
-  .columns-2 {
-    columns: 2;
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  .columns-3 {
-    columns: 3;
-  }
-  .flex-col {
-    flex-direction: column;
-  }
-  .items-center {
-    align-items: center;
-  }
-  .justify-between {
-    justify-content: space-between;
-  }
-  .gap-2 {
-    gap: calc(var(--spacing) * 2);
-  }
-  .gap-3 {
-    gap: calc(var(--spacing) * 3);
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
-  .gap-8 {
-    gap: calc(var(--spacing) * 8);
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
   .underline {
     text-decoration-line: underline;
@@ -236,6 +229,35 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+}
+@layer components {
+  .layout-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .layout-stack {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 4);
+  }
+  .layout-cluster {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 4);
+  }
+  .section-container {
+    margin-inline: auto;
+    align-items: center;
+    padding-inline: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 8);
+  }
+  .s-card {
+    grid-column: span 1 / span 1;
+  }
+  .b-card {
+    grid-column: span 2 / span 2;
   }
 }
 @property --tw-border-style {

@@ -5,3 +5,24 @@
   /* custom colors go here later, e.g.: */
   /* --color-brand: #123456; */
 }
+
+@layer components{
+   .layout-row {
+    @apply flex justify-between items-center;
+  }
+  .layout-stack {
+    @apply flex flex-col gap-4;
+  }
+  .layout-cluster {
+    @apply flex items-center gap-4;
+  }
+  .section-container{
+    @apply items-center mx-auto px-4 py-8;
+  }
+  .s-card{
+    @apply col-span-1;
+  }
+  .b-card{
+    @apply col-span-2;
+  }
+}

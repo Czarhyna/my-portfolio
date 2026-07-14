@@ -1,5 +1,5 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +11,16 @@
             <!-- Navigation Bar -->
             <nav>
                 <!-- nav container -->
-                <div class="flex justify-between items-center">
+                <div class="container layout-row p-4 mx-auto">
                     <div>
                         <a href="index.html">Portfolio</a>
                     </div>
-                    <div class="nav-actions flex gap-4">
+                    <div class="layout-cluster">
                         <a href="#about">About</a>
-                            <a href="#works">Works</a>
-                            <a href="#pricing">Pricing</a>
-                            <a href="contact.html">Contact Me</a>
+                        <a href="#works">Works</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="mailto:jane@example.com">Email Me</a>
+                        <!-- <button class="copy-email" data-email="jane@example.com">Email Me</button> -->
                     </div>
                 </div>
             </nav>
@@ -27,42 +28,115 @@
         <main>
             <section id="about">
                 <!-- container for the columns -->
-                <div class="flex gap-8">
+                <div class="container section-container layout-row">
                     <!-- picture column -->
                     <div>
                         <img src="" alt="Portfolio Owner Pic">
                     </div>
                     <!-- container for other components -->
-                    <div class="flex flex-col gap-4">
-                        <div>
-                            <h2>Your tagline here</h2>
+                    <div class="layout-stack">
+                        <div class="layout-stack">
+                            <span>Your role or job | Location</span>
+                            <h1>Your tagline here</h1>
                         </div>
-                        <div class="flex gap-3">
+                        <div class="layout-cluster">
                             <a href="">
-                                    <img src="" alt="">Facebook
+                                <img src="" alt="">LinkedIn
                             </a>
                             <a href="">
-                                    <img src="" alt="">Instagram
+                                <img src="" alt="">Facebook
                             </a>
-                            <a href="contact.html">
-                                    <img src="" alt="">Email
+                            <a href="">
+                                <img src="" alt="">Instagram
                             </a>
+                            <a href="mailto:jane@example.com">Email</a>
+                            <!-- <button class="copy-email" data-email="jane@example.com">
+                                <img src="" alt="">Email
+                            </button> -->
                         </div>
                     </div>
                 </div>
             </section>
             <section id="works">
-                <h2>Works</h2>
+                <div class="container section-container layout-stack">
+                    <h2 class="sr-only">Works</h2>
+                    <div class="container layout-row p-4">
+                        <a href="">All Works</a>
+                        <a href="">Branding</a>
+                        <a href="">Web</a>
+                        <a href="">Side Quests</a>
+                    </div>
+                    <div class="container">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="s-card">
+                                Work Sample
+                            </div>
+                            <div class="b-card">
+                                Work Sample
+                            </div>
+
+                            <div class="b-card">
+                                Work Sample
+                            </div>
+                            <div class="s-card">
+                                Work Sample
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section id="pricing">
-                <h2>Price</h2>
-            </section>
-            <section id="design-process">
-                <h2>Design Process</h2>
+                <div class="container section-container layout-stack">
+                    <h2>Pricing Plans</h2>
+
+                    <div class="grid grid-cols-1 gap-6">
+                        <!-- pricing card -->
+                        <div class="layout-stack">
+                            <div class="layout-stack">
+                                <div>
+                                    <h3>Package Title</h3>
+                                    <p>Starts at $xxxx</p>
+                                </div>
+                                <p>What's Included?</p>
+                            </div>
+                            <ul>
+                                <li>Placeholder</li>
+                                <li>Placeholder</li>
+                                <li>Placeholder</li>
+                                <li>Placeholder</li>
+                                <li>Placeholder</li> 
+                            </ul>
+                        </div>
+                        
+                        <!-- contact me link -->
+                        <a href="mailto:jane@example.com">Get Started</a>
+                        
+                    </div>
+                </div>
             </section>
         </main>
         <footer>
-            <!-- logo, socials, legals -->
+            <div class="container layout-row">
+                <div class="layout-cluster">
+                    <a href="">Terms of Service</a>
+                    <a href="">Privacy Policy</a>
+                </div>
+                <div class="layout-cluster">
+                    <a href="">
+                        <img src="" alt="">LinkedIn
+                    </a>
+                    <a href="">
+                        <img src="" alt="">Facebook
+                    </a>
+                    <a href="">
+                        <img src="" alt="">Instagram
+                    </a>
+                    <a href="emailto:jane@example.com">Email</a>
+                    <!-- <button class="copy-email" data-email="jane@example.com">
+                        <img src="" alt="">Email
+                    </button> -->
+                </div>
+            </div>
         </footer>
     </body>
-    </html>
+</html>
