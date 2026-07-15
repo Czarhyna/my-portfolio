@@ -1,13 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Righteous&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  /* custom colors go here later, e.g.: */
-  /* --color-brand: #123456; */
+  --color-p-light: #FFEFE8;
+  --color-p-dark: #12061E;
+  --color-a-light: #FEB262;
+  --color-a-dark: #7C52A3;
+
+  --font-display: "Righteous", cursive;
+  --font-sans: "Nunito", sans-serif;
+}
+
+@layer base{
+  /*for fonts*/
+  body{
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6{
+    font-family: var(--font-display);
+  }
+  
+  h1 {
+    font-size: var(--text-6xl);
+    font-weight: 700; /* Righteous only has one real weight, but keep this for fallback fonts */
+  }
+
+  h2 {
+    font-size: var(--text-4xl);
+  }
+
+  h3, h4 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+  }
+  
+  nav, footer {
+    @apply bg-p-dark text-p-light;
+  }
 }
 
 @layer components{
-   .layout-row {
+  /*layout classes - used for formatting flex boxes*/
+  .layout-row {
     @apply flex justify-between items-center;
   }
   .layout-stack {
@@ -16,13 +51,105 @@
   .layout-cluster {
     @apply flex items-center gap-4;
   }
-  .section-container{
-    @apply items-center mx-auto px-4 py-8;
+  
+  /*SEMANTIC COMPONENTS*/
+
+  .light-section-wrapper{
+    @apply bg-p-light py-16;
   }
+  
+  .dark-section-wrapper{
+    @apply bg-p-dark py-16;
+  }
+  
+  .section-container{
+    @apply items-center mx-auto max-w-6xl px-4;
+  }
+  
+  .text-link-light{
+    @apply underline decoration-transparent underline-offset-4 transition-all duration-200 hover:text-a-dark hover:decoration-a-dark;
+  }
+  
+  .card-grid{
+    @apply grid gap-6 w-full;
+    grid-auto-rows: 250px;
+  }
+  
+  .s-card, .b-card {
+    @apply relative overflow-hidden rounded-xl shadow-sm p-4 transition-all duration-300;
+  }
+  
   .s-card{
     @apply col-span-1;
   }
   .b-card{
     @apply col-span-2;
+  }
+  
+  /* When ANY card (either type) is hovered, blur all OTHER cards */
+  .card-grid:has(.s-card:hover, .b-card:hover) .s-card:not(:hover),
+  .card-grid:has(.s-card:hover, .b-card:hover) .b-card:not(:hover) {
+    filter: blur(4px);
+    opacity: 0.6;
+  }
+
+  /* The hovered card (either type) gets elevated */
+  .s-card:hover,
+  .b-card:hover {
+    @apply shadow-lg;
+    z-index: 10;
+    position: relative;
+  }
+  
+  .s-card::after,
+  .b-card::after {
+    content: "";
+    @apply absolute inset-0 z-[5] pointer-events-none opacity-0 transition-all duration-300;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.6) 100%);
+  }
+  
+  .s-card:hover::after,
+  .b-card:hover::after {
+    @apply opacity-100;
+  }
+
+  .card-image{
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+  
+  .card-content{
+    @apply absolute inset-0 z-10 p-2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "date  type"
+      "gap   gap"
+      "title title";
+  }
+  
+  .card-title{
+    grid-area: title;
+    @apply text-p-light justify-self-start self-end;
+  }
+  
+  .card-date{
+    grid-area: date;
+    @apply text-p-light justify-self-start self-end;
+  }
+  
+  .labels{
+    grid-area: type;
+    @apply flex flex-wrap justify-self-end items-start opacity-100 gap-4 transition-all duration-300 group-hover:opacity-100;
+  }
+  
+  @media (hover: none) {
+    .labels {
+      @apply opacity-100;
+    }
+  }
+  
+  .label-text{
+    @apply flex bg-a-dark text-sm text-p-light rounded-full items-center px-2;
   }
 }

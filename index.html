@@ -6,38 +6,39 @@
         <title>Home</title>
         <link rel="stylesheet" href="css/output.css">
     </head>
+    
     <body>
         <header>
             <!-- Navigation Bar -->
             <nav>
                 <!-- nav container -->
-                <div class="container layout-row p-4 mx-auto">
+                <div class="layout-row p-4 mx-auto">
                     <div>
                         <a href="index.html">Portfolio</a>
                     </div>
                     <div class="layout-cluster">
-                        <a href="#about">About</a>
-                        <a href="#works">Works</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="mailto:jane@example.com">Email Me</a>
+                        <a href="#about" class="text-link-light">About</a>
+                        <a href="#works" class="text-link-light">Works</a>
+                        <a href="#pricing" class="text-link-light">Pricing</a>
+                        <a href="mailto:jane@example.com" class="text-a-light">Email Me</a>
                         <!-- <button class="copy-email" data-email="jane@example.com">Email Me</button> -->
                     </div>
                 </div>
             </nav>
         </header>
         <main>
-            <section id="about">
+            <section id="about" class="light-section-wrapper">
                 <!-- container for the columns -->
-                <div class="container section-container layout-row">
+                <div class="section-container layout-row">
                     <!-- picture column -->
                     <div>
                         <img src="" alt="Portfolio Owner Pic">
                     </div>
                     <!-- container for other components -->
                     <div class="layout-stack">
-                        <div class="layout-stack">
+                        <div class="flex flex-col">
                             <span>Your role or job | Location</span>
-                            <h1>Your tagline here</h1>
+                            <h1 class="text-a-dark">Your tagline here</h1>
                         </div>
                         <div class="layout-cluster">
                             <a href="">
@@ -57,32 +58,70 @@
                     </div>
                 </div>
             </section>
-            <section id="works">
-                <div class="container section-container layout-stack">
-                    <h2 class="sr-only">Works</h2>
-                    <div class="container layout-row p-4">
-                        <a href="">All Works</a>
-                        <a href="">Branding</a>
-                        <a href="">Web</a>
-                        <a href="">Side Quests</a>
-                    </div>
-                    <div class="container">
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="s-card">
-                                Work Sample
-                            </div>
-                            <div class="b-card">
-                                Work Sample
-                            </div>
-
-                            <div class="b-card">
-                                Work Sample
-                            </div>
-                            <div class="s-card">
-                                Work Sample
-                            </div>
+            <section id="works" class="dark-section-wrapper" >
+                <div class="section-container layout-stack">
+                  <h2 class="sr-only">Works</h2>
+                  
+                  <!-- Work Filter -->
+                  <div class="text-a-light layout-cluster p-4">
+                      <a href="">All Works</a>
+                      <a href="">Branding</a>
+                      <a href="">Web</a>
+                      <a href="">Side Quests</a>
+                  </div>
+                  <!-- Work cards -->
+                  <div class="card-grid grid-cols-3">
+                    <!-- first row -->
+                    <div class="s-card group">
+                        <img class="card-image" src="assets/imgs/proj1.jpg" alt="">
+                        <div class="card-content">
+                          <div class="card-title">
+                            <p class="text-lg text-p-light">Project A</p>
+                          </div>
+                          <div class="card-date">
+                            <p class="text-lg text-p-light">2026</p>
+                          </div>
+                          <div class="labels">
+                            <span class="label-text">Branding</span>
+                          </div>
                         </div>
                     </div>
+                    <div class="b-card group">
+                        <img class="card-image" src="assets/imgs/proj2.jpg" alt="">
+                        <div class="card-content">
+                          <div class="labels">
+                            <span class="label-text">Branding</span>
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <!-- second row -->
+                    <div class="b-card group">
+                        <img class="card-image" src="assets/imgs/proj2.jpg" alt="">
+                        <div class="card-content">
+                          <div class="labels">
+                            <span class="label-text">Branding</span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="s-card group">
+                        <img class="card-image" src="assets/imgs/proj1.jpg" alt="">
+                        <div class="card-content">
+                          <!--<h3 class="text-white">
+                            Hello
+                          </h3>-->
+                          <div class="card-title">
+                            <p class="text-lg text-p-light">Project A</p>
+                          </div>
+                          <div class="card-date">
+                            <p class="text-lg text-p-light">2026</p>
+                          </div>
+                          <div class="labels">
+                            <span class="label-text">Branding</span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
                 </div>
             </section>
             <section id="pricing">
@@ -116,7 +155,7 @@
             </section>
         </main>
         <footer>
-            <div class="container layout-row">
+            <div class="section-container layout-row">
                 <div class="layout-cluster">
                     <a href="">Terms of Service</a>
                     <a href="">Privacy Policy</a>
@@ -136,7 +175,15 @@
                         <img src="" alt="">Email
                     </button> -->
                 </div>
+                <!--<div class="group">
+                  <p class="opacity-0 group-hover:opacity-100">
+                    Hello sample
+                  </p>
+                </div>-->
             </div>
         </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+        <script>eruda.init();</script>
     </body>
 </html>
