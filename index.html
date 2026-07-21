@@ -14,7 +14,7 @@
                 <!-- nav container -->
                 <div class="layout-row p-4 mx-auto">
                     <div>
-                        <a href="index.html">Portfolio</a>
+                        <a class="font-display" href="index.html">Portfolio</a>
                     </div>
                     <div class="layout-cluster">
                         <a href="#about" class="text-link-light">About</a>
@@ -27,18 +27,18 @@
             </nav>
         </header>
         <main>
-            <section id="about" class="light-section-wrapper">
+            <section id="about" class="light-section-wrapper relative overflow-hidden">
                 <!-- container for the columns -->
-                <div class="section-container layout-row">
+                <div class="section-container hero-layout">
                     <!-- picture column -->
-                    <div>
+                    <!-- <div>
                         <img src="" alt="Portfolio Owner Pic">
-                    </div>
+                    </div> -->
                     <!-- container for other components -->
                     <div class="layout-stack">
                         <div class="flex flex-col">
                             <span>Your role or job | Location</span>
-                            <h1 class="text-a-dark">Your tagline here</h1>
+                            <h1 class="text-a-dark text-[clamp(1.8rem,5vw,2rem)]">Your tagline here. Make it longer to see how it looks like with longer text</h1>
                         </div>
                         <div class="layout-cluster">
                             <a href="">
@@ -56,9 +56,12 @@
                             </button> -->
                         </div>
                     </div>
+                    <div class="peek-character-container">
+                      <img src="assets/imgs/cropped-image.svg" alt="" class="peek-character" aria-hidden="true"/>
+                    </div>
                 </div>
             </section>
-            <section id="works" class="dark-section-wrapper" >
+            <section id="works" class="dark-section-wrapper">
                 <div class="section-container layout-stack">
                   <h2 class="sr-only">Works</h2>
                   
@@ -95,7 +98,7 @@
                         </div>
                     </div>
                     
-                    <!-- second row -->
+                    <!--second row-->
                     <div class="b-card group">
                         <img class="card-image" src="assets/imgs/proj2.jpg" alt="">
                         <div class="card-content">
@@ -107,9 +110,7 @@
                     <div class="s-card group">
                         <img class="card-image" src="assets/imgs/proj1.jpg" alt="">
                         <div class="card-content">
-                          <!--<h3 class="text-white">
-                            Hello
-                          </h3>-->
+                          
                           <div class="card-title">
                             <p class="text-lg text-p-light">Project A</p>
                           </div>
@@ -124,12 +125,12 @@
                   </div>
                 </div>
             </section>
-            <section id="pricing">
+              <!--<section id="pricing">
                 <div class="container section-container layout-stack">
                     <h2>Pricing Plans</h2>
 
-                    <div class="grid grid-cols-1 gap-6">
-                        <!-- pricing card -->
+                       <div class="grid grid-cols-1 gap-6">
+                        pricing card
                         <div class="layout-stack">
                             <div class="layout-stack">
                                 <div>
@@ -146,13 +147,14 @@
                                 <li>Placeholder</li> 
                             </ul>
                         </div>
-                        
-                        <!-- contact me link -->
+                      
+                        contact me link
                         <a href="mailto:jane@example.com">Get Started</a>
                         
-                    </div>
+                    </div> 
                 </div>
-            </section>
+            </section>                    
+-->
         </main>
         <footer>
             <div class="section-container layout-row">
