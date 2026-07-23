@@ -122,8 +122,8 @@
     border-color: theme(--color-a-dark);
   }
   
-  .normal-card-icons{
-    @apply w-6 h-6;
+  .normal-card-icon{
+    @apply fill-a-dark w-6 h-6;
   }
   
   .s-card, .b-card {
