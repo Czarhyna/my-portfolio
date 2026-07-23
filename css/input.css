@@ -169,7 +169,8 @@
   }
   
   .card-content{
-    @apply absolute inset-0 z-10 p-2;
+    @apply absolute inset-0 z-10 p-2
+    opacity-0 gap-4 transition-all duration-300 group-hover:opacity-100;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
@@ -191,8 +192,7 @@
   
   .labels{
     grid-area: type;
-    @apply flex flex-wrap justify-self-end items-start
-    opacity-100 gap-4 transition-all duration-300 group-hover:opacity-100;
+    @apply flex flex-wrap justify-self-end items-start;
   }
   
   .label-text{
