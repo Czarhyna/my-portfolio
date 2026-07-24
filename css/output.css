@@ -17,7 +17,9 @@
     --text-2xl--line-height: calc(2 / 1.5);
     --text-4xl: 2.25rem;
     --text-6xl: 3.75rem;
+    --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -331,9 +333,28 @@
     transform: translateX(-50%);
   }
 }
-@media (prefers-reduced-motion: reduce): {
-  .marquee-track {
-    animation: none;
+@keyframes grow-down {
+  from {
+    opacity: 0;
+    transform: scaleY(0.8);
+    transform-origin: top center;
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top center;
+  }
+}
+@keyframes shrink-up {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: bottom right;
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom right;
   }
 }
 @layer components {
@@ -402,6 +423,11 @@
     width: max-content;
     animation: marquee-scroll 15s linear infinite;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
   .marquee-item {
     padding-inline: calc(var(--spacing) * 8);
     font-family: var(--font-display);
@@ -430,10 +456,12 @@
     }
   }
   .card-grid {
+    position: relative;
     display: grid;
     width: 100%;
     grid-auto-flow: dense;
     gap: calc(var(--spacing) * 6);
+    grid-template-columns: repeat(3, 1fr);
   }
   .normal-card {
     display: flex;
@@ -462,8 +490,12 @@
     transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
+    --tw-duration: 800ms;
+    transition-duration: 800ms;
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+    width: 100%;
+    height: 250px;
   }
   .s-card {
     grid-column: span 1 / span 1;
@@ -471,7 +503,7 @@
   .b-card {
     grid-column: span 2 / span 2;
   }
-  .card-grid:has(.s-card:hover, .b-card:hover) .s-card:not(:hover), .card-grid:has(.s-card:hover, .b-card:hover) .b-card:not(:hover) {
+  .card-grid:has(.s-card:hover, .b-card:hover, .s-card[open], .b-card[open]) .s-card:not(:hover):not([open]), .card-grid:has(.s-card:hover, .b-card:hover, .s-card[open], .b-card[open]) .b-card:not(:hover):not([open]) {
     filter: blur(4px);
     opacity: 0.6;
   }
@@ -498,12 +530,112 @@
   .s-card:hover::after, .b-card:hover::after {
     opacity: 100%;
   }
+  .s-card[open], .b-card[open] {
+    position: absolute;
+    z-index: 20;
+    overflow: visible;
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+    border-color: var(--color-a-dark);
+    background-color: var(--color-p-dark);
+    width: calc(200% + 1.5rem);
+    height: calc(100% + 1.5rem);
+  }
+  .s-card[open]::after, .b-card[open]::after {
+    opacity: 0%;
+  }
+  @media (min-width: 768px) {
+    .s-card[open] {
+      grid-column: span 2 / span 2;
+      @media (width >= 48rem) {
+        grid-column: span 3 / span 3;
+      }
+    }
+  }
+  .card-expandable[open] > .card-expandable-summary {
+    display: contents;
+  }
+  .card-expandable[open] {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: calc(var(--spacing) * 4);
+    grid-template-areas: "image" "content" "body";
+  }
+  @media (min-width: 768px) {
+    .card-expandable[open] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-areas: "image content" "image body";
+    }
+  }
+  .card-expandable-summary {
+    cursor: pointer;
+    list-style-type: none;
+  }
+  .card-expandable-summary::-webkit-details-marker {
+    display: none;
+  }
+  .card-expandable-body {
+    margin-top: calc(var(--spacing) * 3);
+    overflow: hidden;
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+    border-color: color-mix(in srgb, #FFEFE8 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-p-light) 20%, transparent);
+    }
+    padding-top: calc(var(--spacing) * 3);
+    opacity: 0%;
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+    max-height: 0;
+    display: block !important;
+  }
+  .card-expandable[open] .card-image {
+    position: static;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    grid-area: image;
+  }
+  .card-expandable[open] .card-content {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+    padding: 0;
+    opacity: 100%;
+    grid-area: content;
+  }
+  .card-expandable[open] .card-title, .card-expandable[open] .card-date, .card-expandable[open] .labels {
+    align-self: auto;
+    justify-self: auto;
+  }
+  .card-expandable[open] .card-expandable-body {
+    grid-area: body;
+  }
+  .card-expandable[open] .card-expandable-body {
+    opacity: 100%;
+    max-height: 24rem;
+  }
   .card-image {
     position: absolute;
     inset: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
   }
   .card-content {
     position: absolute;
@@ -517,6 +649,8 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
     --tw-duration: 300ms;
     transition-duration: 300ms;
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         opacity: 100%;
@@ -653,6 +787,10 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -672,6 +810,7 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ease: initial;
     }
   }
 }
