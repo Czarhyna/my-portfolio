@@ -113,12 +113,11 @@
   
   /*cards*/
   .card-grid{
-    @apply grid gap-6 w-full;
-    grid-auto-rows: 250px;
+    @apply grid gap-6 w-full grid-flow-dense;
   }
   
   .normal-card{
-    @apply items-center border-2 rounded-xl shadow-sm p-4;
+    @apply flex items-center justify-center border-2 rounded-xl shadow-sm p-4;
     border-color: theme(--color-a-dark);
   }
   
