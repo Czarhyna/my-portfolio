@@ -94,3 +94,42 @@ function updateActiveIconItem() {
 
 window.addEventListener('scroll', updateActiveIconItem, { passive: true });
 updateActiveIconItem(); // run once on load in case about is already in view
+
+// Fades the entire Works grid out, swaps which cards are visible
+// based on the selected filter, then fades the grid back in.
+document.querySelectorAll('.filter-tab').forEach((tab) => {
+  tab.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const filter = tab.dataset.filter;
+    const grid = document.getElementById('works-grid');
+    if (!grid) {
+      console.error('No .card-grid found on the page');
+      return;
+    }
+
+    // Update active tab styling immediately — no need to wait for the fade
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    // Start fade-out
+    grid.classList.add('is-fading');
+
+    // Wait for the fade-out transition to finish before swapping cards
+    grid.addEventListener('transitionend', function handler(event) {
+      // Guard: only respond to the grid's OWN opacity transition —
+      // transitionend bubbles, so without this check, any card's opacity
+      // transition (hover blur, gradient overlay, etc.) would also satisfy this
+      if (event.target !== grid || event.propertyName !== 'opacity') return;
+      grid.removeEventListener('transitionend', handler);
+    
+      const cards = grid.querySelectorAll('.s-card, .b-card');
+      cards.forEach((card) => {
+        const matches = filter === 'all' || card.dataset.category === filter;
+        card.style.display = matches ? '' : 'none';
+      });
+    
+      grid.classList.remove('is-fading');
+    }, { once: true });
+  });
+});

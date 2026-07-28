@@ -28,7 +28,7 @@
                 </div>
             </nav>
         <main>
-          <div class="stack-wrapper relative">
+          <div class="stack-wrapper relative z-0">
             <section id="hero" class="light-section-wrapper relative overflow-hidden sticky top-0 -z-10">
                 <!-- container for the columns -->
                 <div class="section-container hero-layout">
@@ -113,91 +113,66 @@
                   <h2 class="section-headline text-p-light">My Works</h2>
                   
                   <!-- Work Filter -->
-                  <div class="text-a-light layout-cluster justify-center p-4">
-                      <a href="">All Works</a>
-                      <a href="">Branding</a>
-                      <a href="">Web</a>
-                      <a href="">Side Quests</a>
+                  <div class="layout-cluster justify-center">
+                    <a href="#" class="filter-tab active" data-filter="all">All Works</a>
+                    <a href="#" class="filter-tab" data-filter="branding">Branding</a>
+                    <a href="#" class="filter-tab" data-filter="web">Web</a>
+                    <a href="#" class="filter-tab" data-filter="side-quests">Side Quests</a>
                   </div>
                   <!-- Work cards -->
-                  <div class="card-grid grid-cols-2 md:grid-cols-3 auto-rows-[250px]">
+                  <div id="works-grid" class="card-grid min-h-[500px] grid-cols-2 md:grid-cols-3 auto-rows-[250px]">
                     <!-- first row -->
-                    <details class="s-card card-expandable group" data-animate="fade-up">
-                        <summary class="card-expandable-summary">
-                            <img class="card-image" src="assets/imgs/jpg/proj1.jpg" alt="">
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <h3 class="text-p-light">Project A</h3>
-                                </div>
-                                <div class="card-date">
-                                    <p class="text-lg text-p-light">2026</p>
-                                </div>
-                                <div class="labels">
-                                    <span class="label-text">Branding</span>
-                                </div>
-                            </div>
-                        </summary>
-                        <div class="card-expandable-body">
-                            <p class="text-p-light">[Placeholder: 2-3 sentence description of the porblem, approach, and outcome.</p>
-                            <a href="#" class="btn-secondary">View Live</a>
-                        </div>
-                    </details>
-                    <a href="#project" class="b-card group" data-animate="fade-up">
-                        <img class="card-image" src="assets/imgs/jpg/proj2.jpg" alt="">
-                        <div class="card-content">
-                          <div class="card-title">
-                              <h3 class="text-p-light">Project B</h3>
-                          </div>
-                          <div class="card-date">
-                              <p class="text-lg text-p-light">2026</p>
-                          </div>
-                          <div class="labels">
-                              <span class="label-text">Web</span>
-                          </div>
-                        </div>
-                    </a>
+                    <button popovertarget="modal-1" class="s-card group" data-category="branding" data-animate="fade-up" data-modal-trigger>
+                      <img class="card-image" src="assets/imgs/jpg/proj1.jpg" alt="">
+                      <div class="card-content">
+                        <div class="card-title"><p class="text-lg text-p-light">Project Title</p></div>
+                        <div class="card-date"><p class="text-lg text-p-light">2026</p></div>
+                        <div class="labels"><span class="label-text">Branding</span></div>
+                      </div>
+                    </button>
+                    <button popovertarget="modal-1" class="b-card group" data-animate="fade-up" data-modal-trigger>
+                      <img class="card-image" src="assets/imgs/jpg/proj2.jpg" alt="">
+                      <div class="card-content">
+                        <div class="card-title"><p class="text-lg text-p-light">Project Title</p></div>
+                        <div class="card-date"><p class="text-lg text-p-light">2026</p></div>
+                        <div class="labels"><span class="label-text">Branding</span></div>
+                      </div>
+                    </button>
                     
                     <!--second row-->
-                    <div class="b-card group" data-animate="fade-up">
-                        <img class="card-image" src="assets/imgs/jpg/proj2.jpg" alt="">
-                        <div class="card-content">
-                          <div class="labels">
-                            <span class="label-text">Branding</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="s-card group" data-animate="fade-up">
-                        <img class="card-image" src="assets/imgs/jpg/proj1.jpg" alt="">
-                        <div class="card-content">
-                          
-                          <div class="card-title">
-                            <h3 class="text-p-light">Project A</h3>
-                          </div>
-                          <div class="card-date">
-                            <p class="text-lg text-p-light">2026</p>
-                          </div>
-                          <div class="labels">
-                            <span class="label-text">Branding</span>
-                          </div>
-                        </div>
-                    </div>
+                    <button popovertarget="modal-1" class="b-card group" data-category="branding" data-animate="fade-up" data-modal-trigger>
+                      <img class="card-image" src="assets/imgs/jpg/proj1.jpg" alt="">
+                      <div class="card-content">
+                        <div class="card-title"><p class="text-lg text-p-light">Project Title</p></div>
+                        <div class="card-date"><p class="text-lg text-p-light">2026</p></div>
+                        <div class="labels"><span class="label-text">Branding</span></div>
+                      </div>
+                    </button>
+                    <button popovertarget="modal-1" class="s-card group" data-animate="fade-up" data-modal-trigger>
+                      <img class="card-image" src="assets/imgs/jpg/proj2.jpg" alt="">
+                      <div class="card-content">
+                        <div class="card-title"><p class="text-lg text-p-light">Project Title</p></div>
+                        <div class="card-date"><p class="text-lg text-p-light">2026</p></div>
+                        <div class="labels"><span class="label-text">Branding</span></div>
+                      </div>
+                    </button>
                   </div>
                   
-                  <!--project block-->
-                  <div class="pt-16 w-full">
-                    <div id="project" class="project-detail">
-                      
-                        <img class="project-detail-image" src="assets/imgs/jpg/proj2.jpg" alt="">
-                      
-                      <div class="project-detail-card layout-stack items-start">
-                        <h3 class="text-p-dark">Project Name</h3>
-                        <ul class="flex flex-row gap-2">
-                          <li class="label-text">Branding</li>
-                          <li class="label-text">Web</li>
-                        </ul>
-                        <p class="text-p-dark">Placeholder: 2-3 sentences explaining the project brief goes here.</p>
-                        <a href="#" class="pill-text-accent">View live</a>
-                      </div>
+                  <!--project-modal block-->
+                  <div popover id="modal-1" class="project-modal">
+                    <button popovertarget="modal-1" popovertargetaction="hide" class="modal-close">✕</button>
+                    <img class="project-detail-image" src="assets/imgs/jpg/proj1.jpg" alt="">
+                    <div class="project-detail-card layout-stack items-start text-p-dark">
+                      <h3>Project A — Branding & Web Design</h3>
+                      <ul class="labels gap-2">
+                        <li class="label-text">Branding</li>
+                        <li class="label-text">Web</li>
+                      </ul>
+                      <b>Role: Designer & Illustrator</b>
+                      <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquam efficitur lectus, at placerat mauris maximus in. Nunc nisi nunc, vulputate facilisis ultricies rhoncus, accumsan vitae odio. Sed magna dolor, ullamcorper vitae facilisis vitae, tincidunt a nisi. Suspendisse pharetra massa vel mauris porta, a sollicitudin turpis semper. Morbi ultricies eros sed sem ornare, nec finibus lacus scelerisque. Sed sed velit sit amet sem venenatis condimentum. Vivamus bibendum nisl nunc, eu ultricies risus laoreet quis. Vestibulum mauris purus, egestas ac volutpat nec, hendrerit in neque. Curabitur vitae fringilla velit. Sed ultrices dolor in metus bibendum, eget pulvinar nisi venenatis. Duis fringilla convallis purus id varius. Sed egestas purus tristique neque fringilla, at porta nisi egestas. Pellentesque in varius lorem. Sed augue erat, dapibus pellentesque ornare eu, ornare ac dui.
+                      </p>
+                      <a href="#" class="pill-text-accent">View Live</a>
                     </div>
                   </div>
                 </div>
@@ -308,6 +283,7 @@
         </footer>
         
         <script src="js/main.js"></script>
+        <script src="js/modal.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
         <script>eruda.init();</script>
     </body>

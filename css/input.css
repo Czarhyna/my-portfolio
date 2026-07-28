@@ -181,10 +181,24 @@
     @apply scale-95 shadow-sm;
   }
   
+  /*filter*/
+  .filter-tab {
+    @apply text-a-dark transition-colors duration-300 cursor-pointer;
+  }
+
+  .filter-tab.active {
+    @apply text-a-light;
+  }
+  
   /*cards*/
   .card-grid{
-    @apply grid gap-6 w-full grid-flow-dense relative;
-    grid-template-columns: repeat(3, 1fr);
+    @apply grid gap-6 w-full grid-flow-dense relative
+    transition-opacity duration-300 ease-out;
+    grid-template-columns: repeat(3, 1fr)
+  }
+  
+  .card-grid.is-fading {
+    @apply opacity-0;
   }
   
   .normal-card{
@@ -206,6 +220,10 @@
   }
   .b-card{
     @apply col-span-2;
+  }
+  
+  .card-filtered-out {
+    @apply opacity-0 scale-90 pointer-events-none;
   }
   
   /* HOVER STATES */
@@ -352,6 +370,36 @@
   
   .label-text{
     @apply flex bg-a-dark text-sm text-p-light rounded-full items-center px-2;
+  }
+  
+  /*project modal*/
+  .project-modal {
+    @apply fixed max-h-[90vh] overflow-y-auto rounded-xl bg-p-light p-6
+    transition-all duration-400 ease-out;
+  }
+
+  .project-modal.is-fullscreen {
+    top: 1rem !important;
+    left: 1rem !important;
+    width: calc(100% - 2rem) !important;
+    height: calc(100% - 2rem) !important;
+  }
+
+  @media (min-width: 768px) {
+    .project-modal.is-fullscreen {
+      top: 4rem !important;
+      left: 4rem !important;
+      width: calc(100% - 8rem) !important;
+      height: calc(100% - 8rem) !important;
+    }
+  }
+
+  .modal-close {
+    @apply absolute top-4 right-4 text-p-dark text-xl z-10;
+  }
+
+  .project-modal::backdrop {
+    @apply bg-p-dark/70;
   }
   
   /*project block*/
