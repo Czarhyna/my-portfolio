@@ -5,10 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
         <link rel="stylesheet" href="css/output.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     </head>
     
     <body>
-        <header>
+        
             <!-- Navigation Bar -->
             <nav class="bg-p-light">
                 <!-- nav container -->
@@ -18,16 +21,16 @@
                     </div>
                     <div class="layout-cluster">
                         <a href="#about" class="text-link-light">About</a>
-                        <a href="#works" class="text-link-light">Works</a>
-                        <a href="#pricing" class="text-link-light">Pricing</a>
+                        <a href="#portfolio" class="text-link-light">Works</a>
+                        <a href="#services" class="text-link-light">Services</a>
                         <a href="mailto:jane@example.com" class="text-a-light">Email Me</a>
                         <!-- <button class="copy-email" data-email="jane@example.com">Email Me</button> -->
                     </div>
                 </div>
             </nav>
-        </header>
+        
         <main>
-            <section id="about" class="light-section-wrapper relative overflow-hidden">
+            <section id="hero" class="light-section-wrapper relative overflow-hidden">
                 <!-- container for the columns -->
                 <div class="section-container hero-layout">
                     <!-- picture column -->
@@ -35,33 +38,21 @@
                         <img src="" alt="Portfolio Owner Pic">
                     </div> -->
                     <!-- container for other components -->
-                    <div class="layout-stack">
-                        <div class="flex flex-col">
-                            <span>Illustrator</span>
-                            <h1 class="text-a-dark text-[clamp(1.8rem,5vw,2rem)]">Your tagline here. Make it longer to see how it looks like with longer text</h1>
-                        </div>
-                        <div class="layout-cluster">
-                            <a href="">
-                                <img src="" alt="">LinkedIn
-                            </a>
-                            <a href="">
-                                <img src="" alt="">Facebook
-                            </a>
-                            <a href="">
-                                <img src="" alt="">Instagram
-                            </a>
-                            <a href="mailto:jane@example.com">Email</a>
-                            <!-- <button class="copy-email" data-email="jane@example.com">
-                                <img src="" alt="">Email
-                            </button> -->
-                        </div>
+                    <div class="layout-stack items-start">
+                      <p>Illustrator</p>
+                      <h1 class="text-a-dark text-[clamp(1.8rem,5vw,2rem)]">Your tagline here. Make it longer to see how it looks like with longer text</h1>
+                      <a href="#portfolio" class="pill-text-accent button-text-al" data-animate="scale-in">See my works 
+                        <svg class="fill-a-light" xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px">
+                          <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/>
+                        </svg>
+                      </a>
                     </div>
                     <div class="peek-character-container">
                       <img src="assets/imgs/svg/cropped-image.svg" alt="" class="peek-character" aria-hidden="true"/>
                     </div>
                 </div>
             </section>
-            <section id="what-i-do" class="dark-section-wrapper">
+            <section id="services" class="dark-section-wrapper">
               <!-- what i do banner -->
               <div class="marquee-container">
                 <div class="marquee-track">
@@ -94,38 +85,38 @@
               <!-- what i do content -->
               <div class="section-container">
                 <div class="card-grid grid-cols-1 md:grid-cols-3 auto-rows-[200px]">
-                  <div class="normal-card layout-stack">
+                  <div class="normal-card layout-stack" data-animate="fade-up">
                     <svg class="normal-card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                         <path d="m352-522 86-87-56-57-44 44-56-56 43-44-45-45-87 87 159 158Zm328 329 87-87-45-45-44 43-56-56 43-44-57-56-86 86 158 159Zm24-567 57 57-57-57ZM290-120H120v-170l175-175L80-680l200-200 216 216 151-152q12-12 27-18t31-6q16 0 31 6t27 18l53 54q12 12 18 27t6 31q0 16-6 30.5T816-647L665-495l215 215L680-80 465-295 290-120Zm-90-80h56l392-391-57-57-391 392v56Zm420-419-29-29 57 57-28-28Z"/>
                     </svg>
-                    <b class="text-lg text-a-dark">Title</b>
+                    <h3 class="text-a-dark">Title</h3>
                     <p class="text-sm text-center text-a-dark">This is where you put the description to the services you are offering.</p>
                   </div>
                   
-                  <div class="normal-card layout-stack">
+                  <div class="normal-card layout-stack" data-animate="fade-up">
                     <svg class="normal-card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                         <path d="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm240-600h160v-80H400v80Zm400 360H600v80H360v-80H160v160h640v-160Zm-360 0h80v-80h-80v80Zm-280-80h200v-80h240v80h200v-200H160v200Zm320 40Z"/>
                     </svg>
-                    <b class="text-lg text-a-dark">Title</b>
+                    <h3 class="text-a-dark">Title</h3>
                     <p class="text-sm text-center text-a-dark">This is where you put the description to the services you are offering.</p>
                   </div>
                   
-                  <div class="normal-card layout-stack">
+                  <div class="normal-card layout-stack" data-animate="fade-up">
                     <svg class="normal-card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                         <path d="M120-120q-8 0-15.5-3.5T92-132q-12-11-12-27.5T91-188q19-20 45.5-24t53.5 1q8 2 15 4t12-3q6-6 4.5-15t-3.5-17q-4-27-1-53.5t22-46.5q19-20 45.5-24t53.5 1q8 2 15.5 4t12.5-3q6-6 4-15t-4-17q-4-27-1-53.5t22-46.5q19-20 45.5-24t53.5 1q8 2 15.5 4t12.5-3q6-6 4-15t-4-17q-4-27-.5-53.5T536-650q19-20 45.5-24t53.5 1q8 2 15.5 4t12.5-3q6-6 4-15t-4-17q-4-27-.5-53.5T685-804q19-20 45.5-24t53.5 1q8 2 15.5 3.5T812-827q11-12 27.5-12t28.5 11q12 11 12 27.5T869-772q-19 20-45.5 24.5T770-748q-8-2-15.5-4t-12.5 3q-6 6-4 15t4 17q4 27 .5 53.5T720-617q-19 20-45.5 24t-53.5-1q-8-2-15-4t-12 3q-6 6-4.5 15t3.5 17q4 27 1 53.5T572-463q-19 19-45.5 23.5T473-440q-8-2-15-3.5t-12 3.5q-6 6-4.5 14.5T445-409q4 27 1 53.5T424-309q-19 20-46 24t-54-1q-8-2-15-3.5t-12 3.5q-6 6-4 14.5t4 16.5q4 27 .5 53.5T275-155q-19 20-45.5 24t-53.5-1q-8-2-15-3.5t-12 3.5q-6 6-13.5 9t-15.5 3Zm120-400q-83 0-141.5-58.5T40-720q0-84 58.5-142T240-920q84 0 142 58t58 142q0 83-58 141.5T240-520Zm0-80q51 0 85.5-35t34.5-85q0-51-34.5-85.5T240-840q-50 0-85 34.5T120-720q0 50 35 85t85 35ZM640-40q-33 0-56.5-23.5T560-120v-200q0-33 23.5-56.5T640-400h200q33 0 56.5 23.5T920-320v200q0 33-23.5 56.5T840-40H640Zm0-80h200v-200H640v200Zm100-100ZM240-720Z"/>
                     </svg>
-                    <b class="text-lg text-a-dark">Title</b>
+                    <h3 class="text-a-dark">Title</h3>
                     <p class="text-sm text-center text-a-dark">This is where you put the description to the services you are offering.</p>
                   </div>
                 </div>
               </div>
             </section>
-            <section id="works" class="dark-section-wrapper">
+            <section id="portfolio" class="dark-section-wrapper">
                 <div class="section-container layout-stack">
                   <h2 class="sr-only">Works</h2>
                   
                   <!-- Work Filter -->
-                  <div class="text-a-light layout-cluster p-4">
+                  <div class="text-a-light layout-cluster justify-center p-4">
                       <a href="">All Works</a>
                       <a href="">Branding</a>
                       <a href="">Web</a>
@@ -139,7 +130,7 @@
                             <img class="card-image" src="assets/imgs/jpg/proj1.jpg" alt="">
                             <div class="card-content">
                                 <div class="card-title">
-                                    <p class="text-lg text-p-light">Project A</p>
+                                    <h3 class="text-p-light">Project A</h3>
                                 </div>
                                 <div class="card-date">
                                     <p class="text-lg text-p-light">2026</p>
@@ -154,14 +145,20 @@
                             <a href="#" class="btn-secondary">View Live</a>
                         </div>
                     </details>
-                    <div class="b-card group">
+                    <a href="#project" class="b-card group">
                         <img class="card-image" src="assets/imgs/jpg/proj2.jpg" alt="">
                         <div class="card-content">
+                          <div class="card-title">
+                              <h3 class="text-p-light">Project B</h3>
+                          </div>
+                          <div class="card-date">
+                              <p class="text-lg text-p-light">2026</p>
+                          </div>
                           <div class="labels">
-                            <span class="label-text">Branding</span>
+                              <span class="label-text">Web</span>
                           </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!--second row-->
                     <div class="b-card group">
@@ -177,7 +174,7 @@
                         <div class="card-content">
                           
                           <div class="card-title">
-                            <p class="text-lg text-p-light">Project A</p>
+                            <h3 class="text-p-light">Project A</h3>
                           </div>
                           <div class="card-date">
                             <p class="text-lg text-p-light">2026</p>
@@ -188,7 +185,105 @@
                         </div>
                     </div>
                   </div>
+                  
+                  <!--project block-->
+                  <div class="pt-16 w-full">
+                    <div id="project" class="project-detail">
+                      
+                        <img class="project-detail-image" src="assets/imgs/jpg/proj2.jpg" alt="">
+                      
+                      <div class="project-detail-card layout-stack items-start">
+                        <h3 class="text-p-dark">Project Name</h3>
+                        <ul class="flex flex-row gap-2">
+                          <li class="label-text">Branding</li>
+                          <li class="label-text">Web</li>
+                        </ul>
+                        <p class="text-p-dark">Placeholder: 2-3 sentences explaining the project brief goes here.</p>
+                        <a href="#" class="pill-text-accent">View live</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+            </section>
+            <section id="about" class="dark-section-wrapper">
+              
+                <div class="section-container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                  <div class="order-2 md:order-1 flex flex-col gap-10">
+                    <!--Icon list-->
+                    <div class="flex items-start gap-4">
+                      <span class="material-symbols-outlined text-a-dark text-4xl">bolt</span>
+                      <div>
+                        <h3 class="text-a-dark">Fast</h3>
+                        <p class="text-a-dark">Description how you approach the project to make shipping faster than average.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-4">
+                      <span class="material-symbols-outlined text-a-dark text-4xl">search</span>
+                      <div>
+                        <h3 class="text-a-dark">Transparent</h3>
+                        <p class="text-a-dark">Description how you approach the project to deliver transparency.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-4">
+                      <span class="material-symbols-outlined text-a-dark text-4xl">payments</span>
+                      <div>
+                        <h3 class="text-a-dark">Affordable</h3>
+                        <p class="text-a-dark">Yes, it's affordable. Wanna know why?</p>
+                      </div>
+                    </div>  
+                  </div>
+                  
+                  <!-- Heading-->
+                  <div class="order-1 md:order-2 relative text-center flex flex-col gap-6 items-center">
+
+                    <!-- Decorative ribbon, sits behind the text -->
+                    <!-- <svg class="absolute inset-0 w-[140%] h-[140%] -top-[20%] -left-[20%] z-0 opacity-30 fill-a-dark" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1910.09" height="1011.67" viewBox="0 0 636.7 337.22" preserveAspectRatio="xMidYMid slice">
+                      <path transform="matrix(0.582563306363803, 0, 0, 0.582563306363803, -0.016942593687304, -613.64634664423)" d="M0.04 1595.51 C0.08 1552.27 -0.75 1554.81 16.4 1545.22 C72.44 1513.87 199.13 1510.46 393.58 1535.07 C501.81 1548.76 558.87 1554.99 618.48 1559.62 C752.69 1570.04 775.43 1571.28 830.5 1571.12 C926.07 1570.86 1016.92 1558.8 1040.33 1535.22 C1063.75 1511.64 1019.73 1476.54 940.61 1442.66 C869.86 1412.36 815.5 1397.86 685.25 1374.55 C547.69 1349.92 498 1337.33 453.32 1315.8 C392.11 1286.29 370.62 1244.11 391.95 1195.31 C400.28 1176.23 402.38 1173.21 421.69 1152.4 C454.38 1117.18 502.04 1094.34 585.68 1073.82 C658.66 1059 755.17 1054.56 837.53 1053.57 C919.89 1052.57 988.11 1055.01 1048.96 1063.39 L1077.66 1067.35 L1077.66 1094.94 L1077.66 1122.54 L1071.82 1120.32 C1022.87 1101.7 730.41 1097.47 641.91 1114.11 C543.9 1132.53 486.7 1156.45 454.22 1192.61 C403.6 1248.95 451.6 1278.73 653.62 1316.29 C664.57 1318.33 680.92 1321.39 689.93 1323.11 C698.95 1324.82 713.19 1327.43 721.56 1328.91 C818.83 1346.05 883.23 1363.36 944.95 1388.92 C1005.65 1414.07 1051.61 1440.8 1072.43 1463.07 C1075.98 1466.86 1091.53 1488.85 1092.86 1513.63 C1094.19 1538.41 1081.3 1565.99 1057.74 1582.89 C1034.19 1599.79 999.98 1606.02 944.12 1615.15 C876.05 1626.28 670.88 1619.85 522.43 1601.94 C507.61 1600.15 484.95 1597.53 472.06 1596.11 C459.18 1594.69 436.51 1592.04 421.69 1590.22 C396.06 1587.07 376.86 1584.85 296.36 1575.71 C242.49 1569.6 106.74 1569.77 80.82 1575.98 C44.67 1584.64 21.79 1600.02 6.4 1625.98 C-0.08 1636.9 0 1637.26 0.04 1595.51 Z" fill-rule="evenodd" id="Path 4" />
+                    </svg> -->
+  
+                    <h2 class="text-p-light relative text-6xl">Why me<span class="text-a-light">?</span></h2>
+                    <p class="text-p-light max-w-sm relative">
+                      Here's how I approach my design process.
+                    </p>
+                    
+                  
+                  </div>
+                </div>
+              
+            </section>
+            <section id="cta" class="section-brick-transition light-section-wrapper">
+              <div class="section-container layout-stack items-center text-center">
+                <p class="pill-text-accent">Your next steps</p>
+                <h2 class="text-a-dark">Let's create something <span class="text-a-light">awesome </span>together.</h2>
+                <p class="text-p-dark">Message me on my socials below to get in touch.</p>
+                <div class="layout-cluster">
+                    <a href="">
+                        <svg class="fill-p-dark w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                          <path d="M512 96L127.9 96C110.3 96 96 110.5 96 128.3L96 511.7C96 529.5 110.3 544 127.9 544L512 544C529.6 544 544 529.5 544 511.7L544 128.3C544 110.5 529.6 96 512 96zM231.4 480L165 480L165 266.2L231.5 266.2L231.5 480L231.4 480zM198.2 160C219.5 160 236.7 177.2 236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160zM480.3 480L413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480z"/>
+                        </svg>
+                    </a>
+                    <a href="">
+                        <svg class="fill-p-dark w-6 h6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                          <path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L258.2 544L258.2 398.2L205.4 398.2L205.4 320L258.2 320L258.2 286.3C258.2 199.2 297.6 158.8 383.2 158.8C399.4 158.8 427.4 162 438.9 165.2L438.9 236C432.9 235.4 422.4 235 409.3 235C367.3 235 351.1 250.9 351.1 292.2L351.1 320L434.7 320L420.3 398.2L351 398.2L351 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96z"/>
+                        </svg>
+                    </a>
+                    <a href="">
+                        <svg class="fill-p-dark w-6 h6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                          <path d="M290.4 275.7C274 286 264.5 304.5 265.5 323.8C266.6 343.2 278.2 360.4 295.6 368.9C313.1 377.3 333.8 375.5 349.6 364.3C366 354 375.5 335.5 374.5 316.2C373.4 296.8 361.8 279.6 344.4 271.1C326.9 262.7 306.2 264.5 290.4 275.7zM432.7 207.3C427.5 202.1 421.2 198 414.3 195.3C396.2 188.2 356.7 188.5 331.2 188.8C327.1 188.8 323.3 188.9 320 188.9C316.7 188.9 312.8 188.9 308.6 188.8C283.1 188.5 243.8 188.1 225.7 195.3C218.8 198 212.6 202.1 207.3 207.3C202 212.5 198 218.8 195.3 225.7C188.2 243.8 188.6 283.4 188.8 308.9C188.8 313 188.9 316.8 188.9 320C188.9 323.2 188.9 327 188.8 331.1C188.6 356.6 188.2 396.2 195.3 414.3C198 421.2 202.1 427.4 207.3 432.7C212.5 438 218.8 442 225.7 444.7C243.8 451.8 283.3 451.5 308.8 451.2C312.9 451.2 316.7 451.1 320 451.1C323.3 451.1 327.2 451.1 331.4 451.2C356.9 451.5 396.2 451.9 414.3 444.7C421.2 442 427.4 437.9 432.7 432.7C438 427.5 442 421.2 444.7 414.3C451.9 396.3 451.5 356.9 451.2 331.3C451.2 327.1 451.1 323.2 451.1 319.9C451.1 316.6 451.1 312.8 451.2 308.5C451.5 283 451.9 243.6 444.7 225.5C442 218.6 437.9 212.4 432.7 207.1L432.7 207.3zM365.6 251.8C383.7 263.9 396.2 282.7 400.5 304C404.8 325.3 400.3 347.5 388.2 365.6C382.2 374.6 374.5 382.2 365.6 388.2C356.7 394.2 346.6 398.3 336 400.4C314.7 404.6 292.5 400.2 274.4 388.1C256.3 376 243.8 357.2 239.5 335.9C235.2 314.6 239.7 292.4 251.7 274.3C263.7 256.2 282.6 243.7 303.9 239.4C325.2 235.1 347.4 239.6 365.5 251.6L365.6 251.6zM394.8 250.5C391.7 248.4 389.2 245.4 387.7 241.9C386.2 238.4 385.9 234.6 386.6 230.8C387.3 227 389.2 223.7 391.8 221C394.4 218.3 397.9 216.5 401.6 215.8C405.3 215.1 409.2 215.4 412.7 216.9C416.2 218.4 419.2 220.8 421.3 223.9C423.4 227 424.5 230.7 424.5 234.5C424.5 237 424 239.5 423.1 241.8C422.2 244.1 420.7 246.2 419 248C417.3 249.8 415.1 251.2 412.8 252.2C410.5 253.2 408 253.7 405.5 253.7C401.7 253.7 398 252.6 394.9 250.5L394.8 250.5zM544 160C544 124.7 515.3 96 480 96L160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160zM453 453C434.3 471.7 411.6 477.6 386 478.9C359.6 480.4 280.4 480.4 254 478.9C228.4 477.6 205.7 471.7 187 453C168.3 434.3 162.4 411.6 161.2 386C159.7 359.6 159.7 280.4 161.2 254C162.5 228.4 168.3 205.7 187 187C205.7 168.3 228.5 162.4 254 161.2C280.4 159.7 359.6 159.7 386 161.2C411.6 162.5 434.3 168.3 453 187C471.7 205.7 477.6 228.4 478.8 254C480.3 280.3 480.3 359.4 478.8 385.9C477.5 411.5 471.7 434.2 453 452.9L453 453z"/>
+                        </svg>
+                    </a>
+                    <a href="emailto:jane@example.com">
+                      <svg class="fill-p-dark w-6 h6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"/>
+                      </svg>
+                    </a>
+                    <!-- <button class="copy-email" data-email="jane@example.com">
+                        <img src="" alt="">Email
+                    </button> -->
+                </div>
+              </div>
             </section>
               <!--<section id="pricing">
                 <div class="container section-container layout-stack">
@@ -221,27 +316,14 @@
             </section>                    
 -->
         </main>
-        <footer class="dark-section-wrapper text-p-light">
+        <footer class="bg-p-light text-p-dark p-4 -mt-px">
             <div class="section-container layout-row">
+                <p>Disclaimer: Illustration by Storyset at <span class="text-a-dark">https://storyset.com</span></p>
                 <div class="layout-cluster">
                     <a href="">Terms of Service</a>
                     <a href="">Privacy Policy</a>
                 </div>
-                <div class="layout-cluster">
-                    <a href="">
-                        <img src="" alt="">LinkedIn
-                    </a>
-                    <a href="">
-                        <img src="" alt="">Facebook
-                    </a>
-                    <a href="">
-                        <img src="" alt="">Instagram
-                    </a>
-                    <a href="emailto:jane@example.com">Email</a>
-                    <!-- <button class="copy-email" data-email="jane@example.com">
-                        <img src="" alt="">Email
-                    </button> -->
-                </div>
+                
                 <!--<div class="group">
                   <p class="opacity-0 group-hover:opacity-100">
                     Hello sample
@@ -250,6 +332,7 @@
             </div>
         </footer>
         
+        <script src="js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
         <script>eruda.init();</script>
     </body>

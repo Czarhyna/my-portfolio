@@ -1,49 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Righteous&display=swap");
 @import "tailwindcss";
 
-@theme {
-  --color-p-light: #FFEFE8;
-  --color-p-dark: #12061E;
-  --color-a-light: #FEB262;
-  --color-a-dark: #7C52A3;
-
-  --font-display: "Righteous", cursive;
-  --font-sans: "Nunito", sans-serif;
-  
-  --animate-peek-up: peek-up 0.8s ease-out forwards;
-  --animate-grow-down: grow-down 500ms ease-out;
-}
-
-@layer base{
-  /*for fonts*/
-  body{
-    @apply bg-p-dark;
-    font-family: var(--font-sans);
-  }
-  
-  h1, h2, h3, h4, h5, h6{
-    font-family: var(--font-display);
-  }
-  
-  h1 {
-    font-size: var(--text-6xl);
-    font-weight: 700; /* Righteous only has one real weight, but keep this for fallback fonts */
-  }
-
-  h2 {
-    font-size: var(--text-4xl);
-  }
-
-  h3, h4 {
-    font-size: var(--text-2xl);
-    font-weight: 600;
-  }
-  
-  /* nav, footer {
-    @apply bg-p-dark text-p-light;
-  } */
-}
-
 @keyframes peek-up {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
@@ -71,18 +28,74 @@
     }
 }
 
-@keyframes shrink-up {
-  from {
-      opacity: 1;
-      transform: scaleY(1);
-      transform-origin: bottom right;
-    }
-    to {
-      opacity: 0;
-      transform: scaleY(0);
-      transform-origin: bottom right;
-    }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(1rem); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(2rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@theme {
+  --color-p-light: #FFEFE8;
+  --color-p-dark: #12061E;
+  --color-a-light: #FEB262;
+  --color-a-dark: #7C52A3;
+
+  --font-display: "Righteous", cursive;
+  --font-sans: "Nunito", sans-serif;
+  
+  --shadow-pill: 0 4px 14px 0 rgba(254, 178, 98, 0.25);
+  
+  --animate-peek-up: peek-up 0.8s ease-out forwards;
+  --animate-grow-down: grow-down 1s ease-out forwards;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(.27,.26,.34,1) forwards;
+  --animate-slide-left: slide-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@layer base{
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /*for fonts*/
+  body{
+    @apply bg-p-dark;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2 {
+    font-family: var(--font-display);
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700; /* Righteous only has one real weight, but keep this for fallback fonts */
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3, h4 {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  
+   nav{
+    @apply sticky top-0 z-50;
+  } 
+}
+
+
+
   
 @layer components{
   /*layout classes - used for formatting flex boxes*/
@@ -101,17 +114,28 @@
 
   /*section wrappers and containers*/
   .light-section-wrapper{
-    @apply bg-p-light pt-16 -mt-px;
+    @apply bg-p-light py-16 -mt-px;
   }
   
   .dark-section-wrapper{
-    @apply bg-p-dark pt-16 -mt-px;
+    @apply bg-p-dark py-16 -mt-px;
   }
   
   .section-container{
     @apply items-center mx-auto max-w-6xl px-8;
   }
   
+  /* transitions */
+  
+  .section-brick-transition {
+    clip-path: polygon(
+      0 20px, 10% 20px, 10% 0, 20% 0, 20% 20px,
+      30% 20px, 30% 0, 40% 0, 40% 20px,
+      50% 20px, 50% 0, 60% 0, 60% 20px,
+      70% 20px, 70% 0, 80% 0, 80% 20px,
+      90% 20px, 90% 0, 100% 0, 100% 100%, 0 100%
+    );
+  }
   /*banners*/
   .marquee-container {
     @apply bg-a-light border-y-4 border-p-dark overflow-hidden w-full whitespace-nowrap py-4 mb-16;
@@ -138,6 +162,19 @@
     @apply underline decoration-transparent underline-offset-4 transition-all duration-200 hover:text-a-dark hover:decoration-a-dark;
   }
   
+  .pill-text-accent{
+    @apply inline-flex items-center text-a-light text-sm font-bold px-2
+    border-a-light border-2 rounded-xl shadow-sm
+  }
+  
+  .button-text-al {
+    @apply transition-all duration-300 ease-out hover:scale-105 hover:shadow-md;
+  }
+  
+  .button-text-al:active {
+    @apply scale-95 shadow-sm;
+  }
+  
   /*cards*/
   .card-grid{
     @apply grid gap-6 w-full grid-flow-dense relative;
@@ -154,10 +191,8 @@
   }
   
   .s-card, .b-card {
-    @apply relative overflow-hidden rounded-xl shadow-sm p-4 
+    @apply relative w-full h-[250px]  overflow-hidden rounded-xl shadow-sm p-4 
     transition-all duration-800 ease-out;
-    width: 100%;
-    height: 250px;
   }
   
   .s-card{
@@ -198,8 +233,9 @@
   /* EXPANDED STATE */
   .s-card[open],
   .b-card[open]{
-    @apply absolute bg-p-dark border-2 border-a-dark overflow-visible z-20;
-    width: calc(200% + 1.5rem);
+    @apply absolute bg-p-dark border-2 border-a-dark overflow-visible z-20
+    transition-all duration-300 ease-out;
+    width: calc(100% + 1.5rem);
     height: calc(100% + 1.5rem);
   }
 
@@ -283,7 +319,7 @@
   
   .card-content{
     @apply absolute inset-0 z-10 p-2
-    opacity-0 gap-4 transition-all duration-300 ease-out group-hover:opacity-100;
+    opacity-100 md:opacity-0 gap-4 transition-all duration-300 ease-out group-hover:opacity-100;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
@@ -312,12 +348,32 @@
     @apply flex bg-a-dark text-sm text-p-light rounded-full items-center px-2;
   }
   
+  /*project block*/
+  .project-detail {
+    @apply hidden scroll-mt-24 p-4 mb-4
+    flex-col md:flex-row items-center;
+  }
+
+  .project-detail:target {
+    @apply flex;
+  }
+  
+  .project-detail-image {
+    @apply w-4/5 md:w-2/5 md:h-65 aspect-square object-cover rounded-xl shadow-md relative z-10 mx-auto md:mx-0;
+  }
+
+  .project-detail-card {
+    @apply justify-center w-full md:w-4/5 bg-p-light opacity-70 rounded-xl 
+    pt-24 p-6 -mt-16 
+    md:min-h-[20rem] md:pt-6 md:mt-0 md:-ml-16 md:pl-24;
+  }
+  
   /*characters and icons*/
   .peek-character-container {
     @apply overflow-hidden animate-peek-up md:self-end shrink-0;
     @apply w-[clamp(280px,45vw,550px)];
     /* aspect-ratio: 1.5/1; */
-    
+    margin-bottom: -4rem;
     animation-delay: 0.3s;
   }
   
@@ -329,6 +385,28 @@
   @media (hover: none) {
     .labels {
       @apply opacity-100;
+    }
+  }
+  
+  /*animations*/
+  [data-animate] {
+    @apply opacity-0;
+  }
+  [data-animate="fade-up"].is-visible {
+    @apply animate-fade-up;
+  }
+  [data-animate="slide-left"].is-visible {
+    @apply animate-slide-left;
+  }
+  [data-animate="scale-in"].is-visible {
+    @apply animate-scale-in;
+  }
+
+  /* Respect reduced motion: skip straight to visible, no animation */
+  @media (prefers-reduced-motion: reduce) {
+    [data-animate] {
+      @apply opacity-100;
+      animation: none;
     }
   }
 }
