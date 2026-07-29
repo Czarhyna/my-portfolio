@@ -111,6 +111,36 @@
 
   
 @layer components{
+  .grid-lines-bg {
+    @apply relative;
+  }
+
+  .grid-lines-bg::before {
+    --grid-size: 48px;
+    --grid-line-color: var(--color-p-light); /* explicit, not currentColor */
+    --grid-line: color-mix(in srgb, var(--grid-line-color) 8%, transparent);
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px var(--grid-size)) 0 0 / var(--grid-size) var(--grid-size),
+      linear-gradient(var(--grid-line), transparent 1px var(--grid-size)) 0 0 / var(--grid-size) var(--grid-size);
+    mask: linear-gradient(
+    to bottom,
+    transparent,
+    white 60%,
+    white 40%,
+    transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* light-background sections need dark grid lines instead */
+  .light-section-wrapper.grid-lines-bg::before {
+    --grid-line-color: var(--color-p-dark);
+  }
+
+
   /*layout classes - used for formatting flex boxes*/
   .layout-row {
     @apply flex flex-wrap justify-between items-center;
@@ -233,7 +263,7 @@
   }
   
   .normal-card{
-    @apply flex items-center justify-center border-2 rounded-xl shadow-sm p-4;
+    @apply flex items-center justify-center border-2 rounded-xl shadow-sm p-4 bg-p-dark;
     border-color: theme(--color-a-dark);
   }
   
