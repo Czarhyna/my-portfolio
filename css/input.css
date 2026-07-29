@@ -32,9 +32,9 @@
   from { opacity: 0; transform: translateY(1rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes slide-left {
-  from { opacity: 0; transform: translateX(2rem); }
-  to   { opacity: 1; transform: translateX(0); }
+@keyframes slide-up {
+  from { opacity: 1; transform: translateY(5rem); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.95); }
@@ -44,6 +44,11 @@
 @keyframes reveal-up {
   from { opacity: 0; clip-path: inset(0 0 100% 0); }
   to   { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
 }
 
 @theme {
@@ -59,10 +64,12 @@
   
   --animate-peek-up: peek-up 0.8s ease-out forwards;
   --animate-grow-down: grow-down 1s ease-out forwards;
-  --animate-fade-up: fade-up 1s cubic-bezier(.27,.26,.34,1) forwards;
-  --animate-slide-left: slide-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-up: fade-up 1s cubic-bezier(0.27,0.26,0.34,1) forwards;
+  --animate-slide-left: slide-up 0.6s cubic-bezier(0.17,0.67,0.87,1.02) forwards;
   --animate-scale-in: scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-reveal-up: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-shimmer: shimmer 1.2s ease-out forwards;
+
 }
 
 @layer base{
@@ -168,16 +175,40 @@
     @apply underline decoration-transparent underline-offset-4 transition-all duration-200 hover:text-a-dark hover:decoration-a-dark;
   }
   
-  .pill-text-accent{
-    @apply inline-flex items-center text-a-light text-sm font-bold px-2
-    border-a-light border-2 rounded-xl shadow-sm
+  .pill-text-accent, .pill-text-accent2 {
+    @apply inline-flex items-center text-sm font-bold px-2 border-2 rounded-xl shadow-sm;
+  }
+
+  .pill-text-accent {
+    @apply border-a-light text-a-light;
+  }
+
+  .pill-text-accent2 {
+    @apply border-a-dark text-a-dark;
+  }
+
+  .pill-text-accent2-bg {
+    @apply inline-flex items-center text-p-light text-sm font-bold px-2
+    bg-a-dark border-a-dark border-2 rounded-xl shadow-sm;
   }
   
-  .button-text-al {
-    @apply transition-all duration-300 ease-out hover:scale-105 hover:shadow-md;
+  .button-text-al, .button-text-ad {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .button-text-al:hover {
+    @apply scale-105 shadow-md bg-a-light text-p-light;
   }
   
   .button-text-al:active {
+    @apply scale-95 shadow-sm;
+  }
+
+  .button-text-ad:hover {
+    @apply scale-105 shadow-md bg-a-dark text-p-light;
+  }
+  
+  .button-text-ad:active {
     @apply scale-95 shadow-sm;
   }
   
@@ -206,8 +237,8 @@
     border-color: theme(--color-a-dark);
   }
   
-  .normal-card-icon{
-    @apply fill-a-dark w-6 h-6;
+  .normal-card-content{
+    @apply text-p-light flex flex-col gap-4 text-center;
   }
   
   .s-card, .b-card {
@@ -254,86 +285,6 @@
     @apply opacity-100;
   }
 
-  /* EXPANDED STATE */
-  .s-card[open],
-  .b-card[open]{
-    @apply absolute bg-p-dark border-2 border-a-dark overflow-visible z-20
-    transition-all duration-300 ease-out;
-    width: calc(100% + 1rem);
-    height: calc(100% + 1rem);
-  }
-
-  .s-card[open]::after,
-  .b-card[open]::after{
-    @apply opacity-0;
-  }
-
-  @media (min-width: 768px){
-    .s-card[open]{
-      @apply col-span-2 md:col-span-3;
-    }
-  }
-  
-  .card-expandable[open] > .card-expandable-summary {
-    display: contents;
-  }
-
-  .card-expandable[open] {
-    @apply grid grid-cols-1 gap-4;
-    grid-template-areas: 
-      "image"
-      "content"
-      "body";
-  }
-
-  @media (min-width: 768px) {
-    .card-expandable[open] {
-      @apply grid-cols-2;
-      grid-template-areas: 
-        "image content"
-        "image body";
-    }
-  }
-
-  .card-expandable-summary {
-    @apply list-none cursor-pointer;
-  }
-
-  .card-expandable-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .card-expandable-body {
-    @apply mt-3 pt-3 border-t border-p-light/20
-    overflow-hidden opacity-0 transition-all duration-300 ease-out;
-    max-height: 0;
-    display: block !important;
-  }
-
-  .card-expandable[open] .card-image {
-    @apply static h-full w-full object-cover rounded-lg;
-    grid-area: image;
-  }
-
-  .card-expandable[open] .card-content {
-    @apply static opacity-100 p-0 flex flex-col gap-2;
-    grid-area: content;
-  }
-
-  .card-expandable[open] .card-title,
-  .card-expandable[open] .card-date,
-  .card-expandable[open] .labels {
-    @apply self-auto justify-self-auto;
-  }
-
-  .card-expandable[open] .card-expandable-body {
-    grid-area: body;
-  }
-
-  .card-expandable[open] .card-expandable-body{
-    @apply opacity-100;
-    max-height: 24rem;
-  }
 
   /* WORK CARD CONTENTS */
   .card-image{
@@ -413,13 +364,13 @@
   }
   
   .project-detail-image {
-    @apply w-4/5 md:w-2/5 md:h-65 aspect-square object-cover rounded-xl shadow-md relative z-10 mx-auto md:mx-0;
+    @apply w-4/5 md:w-2/5 md:h-65 aspect-square object-cover rounded-xl shadow-md relative z-10 mx-auto;
   }
 
   .project-detail-card {
-    @apply justify-center w-full md:w-4/5 bg-p-light opacity-70 rounded-xl 
+    @apply justify-center w-full bg-p-light opacity-70 rounded-xl 
     pt-24 p-6 -mt-16 
-    md:min-h-[20rem] md:pt-6 md:mt-0 md:-ml-16 md:pl-24;
+    md:min-h-[20rem] md:pt-6 md:mt-0;
   }
   
   .about-icon-wrapper {
@@ -494,7 +445,7 @@
   [data-animate="fade-up"].is-visible {
     @apply animate-fade-up;
   }
-  [data-animate="slide-left"].is-visible {
+  [data-animate="slide-up"].is-visible {
     @apply animate-slide-left;
   }
   [data-animate="scale-in"].is-visible {
@@ -503,6 +454,26 @@
   
   [data-animate="peek-up"].is-visible {
     @apply animate-peek-up;
+  }
+
+  [data-animate="shimmer"] {
+    background: linear-gradient(
+      90deg,
+      transparent calc(50% - 3ch),
+      var(--color-a-light) 50%,
+      transparent calc(50% + 3ch)
+    ) 0 0 / 300% 100% no-repeat border-box,
+    linear-gradient(var(--color-p-light), var(--color-p-light)) padding-box;
+    
+    border: 2px solid transparent;
+    background-clip: text, padding-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+  }
+  [data-animate="shimmer"].is-visible {
+    @apply animate-shimmer;
   }
 
   /* Respect reduced motion: skip straight to visible, no animation */
