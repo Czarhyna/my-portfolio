@@ -101,35 +101,62 @@ document.querySelectorAll('.filter-tab').forEach((tab) => {
   tab.addEventListener('click', (event) => {
     event.preventDefault();
 
-    const filter = tab.dataset.filter;
     const grid = document.getElementById('works-grid');
     if (!grid) {
       console.error('No .card-grid found on the page');
       return;
     }
 
-    // Update active tab styling immediately — no need to wait for the fade
+    // Guard: ignore clicks while a fade is already in progress —
+    // prevents overlapping transitionend listeners piling up
+    if (grid.dataset.fading === 'true') {
+      console.log('[filter] Ignoring click — fade already in progress');
+      return;
+    }
+    grid.dataset.fading = 'true';
+
+    const filter = tab.dataset.filter;
+    console.log(`[filter] Tab clicked: "${filter}"`);
+
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
 
-    // Start fade-out
     grid.classList.add('is-fading');
 
-    // Wait for the fade-out transition to finish before swapping cards
-    grid.addEventListener('transitionend', function handler(event) {
-      // Guard: only respond to the grid's OWN opacity transition —
-      // transitionend bubbles, so without this check, any card's opacity
-      // transition (hover blur, gradient overlay, etc.) would also satisfy this
-      if (event.target !== grid || event.propertyName !== 'opacity') return;
-      grid.removeEventListener('transitionend', handler);
-    
+    let completed = false;
+
+    function swapCards() {
+      if (completed) return; // prevent double-run if both transitionend AND timeout fire
+      completed = true;
+
+      console.log(`[filter] Swapping cards for filter: "${filter}"`);
       const cards = grid.querySelectorAll('.s-card, .b-card');
+      let visibleCount = 0;
       cards.forEach((card) => {
         const matches = filter === 'all' || card.dataset.category === filter;
         card.style.display = matches ? '' : 'none';
+        if (matches) visibleCount++;
       });
-    
+      console.log(`[filter] ${visibleCount} of ${cards.length} cards now visible`);
+
       grid.classList.remove('is-fading');
-    }, { once: true });
+      delete grid.dataset.fading;
+    }
+
+    grid.addEventListener('transitionend', function handler(event) {
+      if (event.target !== grid || event.propertyName !== 'opacity') return;
+      console.log('[filter] Grid opacity transitionend fired normally');
+      grid.removeEventListener('transitionend', handler);
+      clearTimeout(fallbackTimer);
+      swapCards();
+    });
+
+    // Fallback: if transitionend never fires (e.g. interrupted by other
+    // animations on child cards), force completion after the transition's
+    // expected duration (300ms) plus a small buffer
+    const fallbackTimer = setTimeout(() => {
+      console.warn('[filter] transitionend never fired — using fallback timeout');
+      swapCards();
+    }, 350);
   });
 });
